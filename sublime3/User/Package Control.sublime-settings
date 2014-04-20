@@ -1,0 +1,21 @@
+{
+	"installed_packages":
+	[
+		"Alignment",
+		"Better CoffeeScript",
+		"Color Highlighter",
+		"ColorPicker",
+		"Emmet",
+		"Floobits",
+		"GitGutter",
+		"Jade",
+		"JavaScript Refactor",
+		"JavaScript Snippets",
+		"JavaScriptNext - ES6 Syntax",
+		"JSHint Gutter",
+		"Puppet",
+		"SideBarEnhancements",
+		"Stylus",
+		"Theme - Spacegray"
+	]
+}
