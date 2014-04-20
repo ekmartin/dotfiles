@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Usage: todo (adds to the list)
+#        todoc (clears the list)
+#
+# Uses the terminal's motd as a todo list.
+set -e
+
+# When invoked as todo, append to motd:
+test "$(basename $0)" = "todo" && {
+    sh -c "echo '$1' >> /etc/motd"
+}
+
+
+# If todoc is called with no arguments, clear motd:
+test "$(basename $0)" = "todoc" && {
+    if [ "$1" ]; then
+        sh -c "sudo echo '$1' > /etc/motd"
+    else
+        rm /etc/motd
+    fi
+}
