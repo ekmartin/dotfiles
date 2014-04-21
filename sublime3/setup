@@ -1,22 +1,49 @@
 #!/bin/sh
 # Setup a machine for Sublime Text, credit to https://github.com/holman/dotfiles/pull/102
-set -x
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+user () {
+  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
 
 sublime_dir=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 
+info "Sublime directory set to: $sublime_dir"
 # backup previous User folder if it exists
 if [ -d "$sublime_dir" ]; then
+  info "Sublime settings directory exists, backing it up first."
   rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User.backup
-  cp -rf "$sublime_dir" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User.backup
+  cp -Rf "$sublime_dir" ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User.backup
+  success "Backup complete."
 fi
 
 if [ ! -d "$sublime_dir" ]; then
+  info "Sublime settings directory missing, creating a new folder."
   mkdir -p "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+  success "Folder created."
 fi
 
 # symlink user settings
-for file in $ZSH/sublime3/User/*
+for file in $DOTFILES/sublime3/User/*
 do
-  echo $file
-  ln -sf "$file" "$sublime_dir"
+  info "Linking file: $file"
+  ln -f "$file" "$sublime_dir"
 done
+
+success "All done!"
+
+killall "Sublime Text" > /dev/null 2>&1
+
