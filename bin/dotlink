@@ -1,9 +1,8 @@
 #!/bin/sh
 #
-# dot
+# dotlink
 #
-# `dot` handles installation, updates, things like that. Run it periodically
-# to make sure you're on the latest and greatest.
+# Links files from ~/.dotfiles to your home directory.
 
 DOTFILES_ROOT="$HOME/.dotfiles"
 
