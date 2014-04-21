@@ -6,11 +6,36 @@
 # to make sure you're on the latest and greatest.
 export DOTFILES=$HOME/.dotfiles
 
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+user () {
+  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
 # Set OS X defaults
+info "Setting OS X defaults."
 $DOTFILES/osx/set-defaults.sh
+success "Done setting OS X defaults."
 
 # Upgrade homebrew
+info "Upgrading homebrew."
 brew update
+success "Done upgrading homebrew."
 
 # Install homebrew packages
+info "Installing homebrew packages."
 $DOTFILES/homebrew/install.sh 2>&1
+success "Done installing homebrew packages."
