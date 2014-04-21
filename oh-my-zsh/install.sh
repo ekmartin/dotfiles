@@ -7,6 +7,12 @@ then
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
+if [ "${echo $SHELL}" != "/bin/zsh" ]
+then
+  echo "zsh isn't the default shell, setting default."
+  chsh -s /bin/zsh
+fi
+
 zsh_custom_plugins=$omzDir/custom/plugins
 rbates=$zsh_custom_plugins/rbates
 
