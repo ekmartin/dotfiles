@@ -149,3 +149,7 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Sort Activity Monitor results by CPU usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+# Set the default show time for the dock to a high number, thus basically removing it:
+defaults write com.apple.dock autohide-time-modifier -int 99999
+
