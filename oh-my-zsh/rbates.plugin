@@ -1,0 +1,18 @@
+# A slightly modified version of @ryanb's oh-my-zsh plugin.
+# 'c' takes you to your projects directory, with autocompletion.
+c() {
+  cd $PROJECTS/$1
+}
+_c() {
+  _files -W $PROJECTS -/
+}
+compdef _c c
+
+# Does the same as 'c', but for your home folder.
+h() {
+  cd ~/$1
+}
+_h() {
+  _files -W ~/ -/
+}
+compdef _h h
