@@ -6,6 +6,8 @@ set -e
 
 sudo -v
 
+DOTFILES=$HOME/.dotfiles
+
 cd "$DOTFILES"
 
 info () {
