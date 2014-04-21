@@ -1,0 +1,43 @@
+# Sample gitconfig
+#
+
+[hub]
+        protocol = ssh
+[user]
+        name = ekmartin
+        email = AUTHOREMAIL
+[credential]
+        helper = osxkeychain
+[alias]
+        all             = !$DOTFILES/bin/git-all
+        ammend          = !$DOTFILES/bin/git-amend
+        copyname        = !$DOTFILES/bin/git-copy-branch-name
+        deletemerged    = !$DOTFILES/bin/git-delete-local-merged
+        undo            = !$DOTFILES/bin/git-undo
+        unpushed        = !$DOTFILES/bin/git-unpushed
+        unpushed-stat   = !$DOTFILES/bin/git-unpushed-stat
+        un              = !$DOTFILES/bin/git-up
+        reup            = !$DOTFILES/bin/git-reup
+        promote         = !$DOTFILES/bin/git-promote
+        wtf             = !$DOTFILES/bin/git-wtf
+        count           = !git shortlog -sn
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+[mergetool]
+        keepBackup = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = simple

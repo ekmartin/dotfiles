@@ -1,0 +1,3 @@
+# Ignore the gitconfig to hide email, which is put in 
+# through script/bootstrap
+git/gitconfig.symlink
