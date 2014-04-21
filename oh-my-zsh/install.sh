@@ -17,4 +17,4 @@ then
 fi
 
 echo "Copying plugin file."
-cp $DOTFILES/oh-my-zsh/rbates.plugin $rbates/rbates.plugin.zsh
+cp ~/.dotfiles/oh-my-zsh/rbates.plugin $rbates/rbates.plugin.zsh
