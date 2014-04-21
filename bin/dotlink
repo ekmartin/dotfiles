@@ -4,7 +4,7 @@
 #
 # Links files from ~/.dotfiles to your home directory.
 
-DOTFILES_ROOT="$HOME/.dotfiles"
+DOTFILES="$HOME/.dotfiles"
 
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1"
@@ -35,7 +35,7 @@ overwrite_all=false
 backup_all=false
 skip_all=false
 
-for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+for source in `find $DOTFILES -maxdepth 2 -name \*.symlink`
 do
   dest="$HOME/.`basename \"${source%.*}\"`"
 
