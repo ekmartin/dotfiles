@@ -7,7 +7,9 @@ then
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-if [ "${echo $SHELL}" != "/bin/zsh" ]
+currentShell=$(echo $SHELL)
+
+if [ "$currentShell" != "/bin/zsh" ]
 then
   echo "zsh isn't the default shell, setting default."
   chsh -s /bin/zsh
@@ -24,3 +26,6 @@ fi
 
 echo "Copying plugin file."
 cp ~/.dotfiles/oh-my-zsh/rbates.plugin $rbates/rbates.plugin.zsh
+
+echo "Overwriting af-magic theme."
+cp ~/.dotfiles/oh-my-zsh/af-magic.zsh-theme $omzDir/themes
