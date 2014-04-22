@@ -44,8 +44,8 @@ do
 done
 
 info "Linking JSHint-files."
-ln -f "$DOTFILES/sublime3/.jshintrc" "$sublime_dir/../JSHint\ Gutter"
-ln -f "$DOTFILES/sublime3/JSHint.sublime-settings" "$sublime_dir/../JSHint\ Gutter"
+ln -f "$DOTFILES/sublime3/.jshintrc" "$sublime_dir/../JSHint Gutter/.jshintrc"
+ln -f "$DOTFILES/sublime3/JSHint.sublime-settings" "$sublime_dir/../JSHint Gutter/JSHint.sublime-settings"
 
 success "All done!"
 
