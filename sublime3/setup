@@ -43,6 +43,10 @@ do
   ln -f "$file" "$sublime_dir"
 done
 
+info "Linking JSHint-files."
+ln -f "$DOTFILES/sublime3/.jshintrc" "$sublime_dir/../JSHint\ Gutter"
+ln -f "$DOTFILES/sublime3/JSHint.sublime-settings" "$sublime_dir/../JSHint\ Gutter"
+
 success "All done!"
 
 killall "Sublime Text" > /dev/null 2>&1
