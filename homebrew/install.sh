@@ -14,6 +14,6 @@ fi
 
 # Install homebrew packages
 brew tap phinze/cask
-brew install grc coreutils mongodb brew-cask cloc htop-osx wget unrar hub node
+brew install grc coreutils mongodb brew-cask cloc htop-osx wget unrar hub node mosh
 
 exit 0
