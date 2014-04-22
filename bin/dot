@@ -32,7 +32,7 @@ success "Done setting OS X defaults."
 
 # Upgrade homebrew
 info "Upgrading homebrew."
-brew update
+brew update && brew upgrade
 success "Done upgrading homebrew."
 
 # Install homebrew packages
