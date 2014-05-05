@@ -30,8 +30,8 @@ unset config_files
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 
-plugins=(bower brew brew-cask gem git npm pip python rbates sublime virtualenv)
-
+#plugins=(bower brew brew-cask gem git npm pip python rbates sublime virtualenv)
+plugins=(git pip python rbates virtualenv)
 source $ZSH/oh-my-zsh.sh
 
 . ~/z/z.sh
