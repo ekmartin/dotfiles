@@ -7,3 +7,13 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 # Set tab color
 alias ssh="color-ssh ssh"
 alias mosh="color-ssh mosh"
+
+# Copa
+alias copy="copa copy"
+alias paste="copa paste"
+
+
+# Copa
+alias copy="copa copy"
+alias paste="copa paste"
+
