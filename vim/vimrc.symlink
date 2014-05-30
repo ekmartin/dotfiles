@@ -5,3 +5,13 @@ filetype indent plugin on
 
 " Show line numbers
 set number
+
+" Set tabs to 4 spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Fix indenting
+set autoindent
+set smartindent
+
