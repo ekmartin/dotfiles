@@ -1,8 +1,5 @@
 syntax on
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
-
 " Show line numbers
 set number
 
@@ -15,3 +12,25 @@ set expandtab
 set autoindent
 set smartindent
 
+" Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'molokai'
+Plugin 'taglist.vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+set t_Co=256
+set background=dark
+
+colorscheme molokai
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
