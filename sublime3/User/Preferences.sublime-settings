@@ -6,7 +6,7 @@
 	[
 		"Vintage"
 	],
-	"scroll_speed": 0,
+	"scroll_speed": 1.0,
 	"tab_size": 2,
 	"theme": "Spacegray Eighties.sublime-theme",
 	"translate_tabs_to_spaces": true,

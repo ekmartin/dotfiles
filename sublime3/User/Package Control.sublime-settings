@@ -2,9 +2,12 @@
 	"installed_packages":
 	[
 		"Alignment",
+		"AlignTab",
 		"Better CoffeeScript",
 		"Color Highlighter",
 		"ColorPicker",
+		"DocBlockr",
+		"Dotfiles Syntax Highlighting",
 		"Emmet",
 		"Floobits",
 		"GitGutter",
@@ -16,6 +19,7 @@
 		"Puppet",
 		"SideBarEnhancements",
 		"Stylus",
-		"Theme - Spacegray"
+		"Theme - Spacegray",
+		"VAlign"
 	]
 }
