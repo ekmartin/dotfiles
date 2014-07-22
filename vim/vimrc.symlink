@@ -3,14 +3,20 @@ syntax on
 " Show line numbers
 set number
 
-" Set tabs to 4 spaces
-set tabstop=4
-set shiftwidth=4
+" Make backspace work normally
+set backspace=2
+
+" Set tabs to 2 spaces
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Fix indenting
 set autoindent
 set smartindent
+
+" Map leader to ,
+let mapleader = ","
 
 " Vundle
 set nocompatible
@@ -20,17 +26,60 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'molokai'
+Plugin 'bling/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'walm/jshint.vim'
+Plugin 'moll/vim-node'
+Plugin 'wting/rust.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'wavded/vim-stylus'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'godlygeek/tabular'
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" 256-colors:
 set t_Co=256
-set background=dark
+colorscheme Tomorrow-Night-Eighties
 
-colorscheme molokai
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
+" For Airline
+set laststatus=2
+
+" Keybindings
+map <C-n> :NERDTreeToggle<CR>
+map <F8> :TagbarToggle<CR>
+
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsSnippetDirectories  = ["snips"]
+
+" Make UltiSnips work with YouCompleteMe
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+
+noremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
