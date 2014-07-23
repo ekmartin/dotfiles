@@ -6,4 +6,4 @@ then
 fi
 
 echo "Installing virtualenv:"
-sudo pip install virtualenv git-sweep
+sudo pip install virtualenv 
