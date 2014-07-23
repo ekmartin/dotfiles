@@ -42,6 +42,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
@@ -58,10 +59,19 @@ set laststatus=2
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 
+
+" Show buffers in airline
+let g:airline#extensions#tabline#enabled = 1
+
+" Remove whitespace highlight from vim-go
+let g:go_highlight_trailing_whitespace_error = 0
+
+" UltiSnips-bindings
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories  = ["snips"]
+
 
 " Make UltiSnips work with YouCompleteMe
 function! g:UltiSnips_Complete()

@@ -12,8 +12,3 @@ alias mosh="color-ssh mosh"
 alias copy="copa copy"
 alias paste="copa paste"
 
-
-# Copa
-alias copy="copa copy"
-alias paste="copa paste"
-
