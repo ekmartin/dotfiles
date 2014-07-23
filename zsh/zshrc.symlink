@@ -1,14 +1,17 @@
-# shortcut to this dotfiles path is $DOTFILES
+# Shortcut to this dotfiles path is $DOTFILES:
 export DOTFILES=$HOME/.dotfiles
 
-# your project folder that we can `c [tab]` to
+# Projects-folder, used to c [project] to:
 export PROJECTS=~/Code
+
+# Go-path:
+export GOPATH=$PROJECTS/go
+export PATH=$PATH:$GOPATH/bin
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
+# Stuff that shouldn't be in the repo:
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc
