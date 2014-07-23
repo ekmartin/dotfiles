@@ -12,7 +12,6 @@
         all             = !$DOTFILES/bin/git-all
         ammend          = !$DOTFILES/bin/git-amend
         copyname        = !$DOTFILES/bin/git-copy-branch-name
-        deletemerged    = !$DOTFILES/bin/git-delete-local-merged
         undo            = !$DOTFILES/bin/git-undo
         unpushed        = !$DOTFILES/bin/git-unpushed
         unpushed-stat   = !$DOTFILES/bin/git-unpushed-stat
@@ -21,6 +20,7 @@
         promote         = !$DOTFILES/bin/git-promote
         wtf             = !$DOTFILES/bin/git-wtf
         count           = !git shortlog -sn
+        sweep           = !git-sweep
 [color]
         diff = auto
         status = auto
