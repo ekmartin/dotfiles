@@ -34,7 +34,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 
 #plugins=(bower brew brew-cask gem git npm pip python rbates sublime virtualenv)
-plugins=(pip python rbates virtualenv)
+plugins=(git pip python rbates virtualenv jump)
 source $ZSH/oh-my-zsh.sh
 
 . ~/z/z.sh
