@@ -7,8 +7,8 @@ set number
 set backspace=2
 
 " Set tabs to 2 spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " Fix indenting
@@ -44,6 +44,7 @@ Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
+Plugin 'Townk/vim-autoclose'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
