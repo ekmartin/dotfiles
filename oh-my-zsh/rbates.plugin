@@ -8,6 +8,16 @@ _c() {
 }
 compdef _c c
 
+# Does the same as 'c', but for go projects
+GOSRCPATH=
+gop() {
+  cd $GOPATH/src/github.com/ekmartin/$1
+}
+_gop() {
+  _files -W $GOPATH/src/github.com/ekmartin -/ 
+}
+compdef _gop gop
+
 # Does the same as 'c', but for your home folder.
 h() {
   cd ~/$1
