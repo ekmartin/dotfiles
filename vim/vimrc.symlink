@@ -6,7 +6,8 @@ set number
 " Make backspace work normally
 set backspace=2
 
-" Set tabs to 2 spaces
+" Set tabs to 4 spaces
+set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -15,8 +16,15 @@ set expandtab
 set autoindent
 set smartindent
 
+" Better search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
 " Map leader to ,
 let mapleader = ","
+let g:mapleader = ","
 
 " Vundle
 set nocompatible
@@ -26,9 +34,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'bling/vim-airline'
 Plugin 'honza/vim-snippets'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
@@ -45,13 +53,22 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
 Plugin 'Townk/vim-autoclose'
+Plugin 'mxw/vim-jsx'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set timeoutlen=50
+
 " 256-colors:
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties
+let base16colorspace=256
+
+" colorscheme Tomorrow-Night-Eighties
+colorscheme base16-eighties
+
+set background=dark
 
 " For Airline
 set laststatus=2
@@ -60,6 +77,14 @@ set laststatus=2
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 
+" Move in screen lines
+noremap  <buffer> <silent> k gk
+noremap  <buffer> <silent> j gj
+noremap  <buffer> <silent> 0 g0
+noremap  <buffer> <silent> $ g$
+
+" Enable jsx in non .jsx-files
+" let g:jsx_ext_required = 0
 
 " Show buffers in airline
 let g:airline#extensions#tabline#enabled = 1
@@ -72,7 +97,6 @@ let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories  = ["snips"]
-
 
 " Make UltiSnips work with YouCompleteMe
 function! g:UltiSnips_Complete()
@@ -92,5 +116,7 @@ endfunction
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
-noremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+noremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
