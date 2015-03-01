@@ -9,7 +9,6 @@ _c() {
 compdef _c c
 
 # Does the same as 'c', but for go projects
-GOSRCPATH=
 gop() {
   cd $GOPATH/src/github.com/ekmartin/$1
 }
