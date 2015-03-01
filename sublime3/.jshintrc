@@ -57,21 +57,17 @@
     "sub"           : false,     // true: Tolerate using `[]` notation when it can still be expressed in dot notation
     "supernew"      : false,     // true: Tolerate `new function () { ... };` and `new Object;`
     "validthis"     : false,     // true: Tolerate using this in a non-constructor function
+    "predef"        : ["-Promise"],
 
     // Environments
     "browser"       : true,     // Web Browser (window, document, etc)
     "couch"         : false,    // CouchDB
     "devel"         : true,     // Development/debugging (alert, confirm, etc)
-    "dojo"          : false,    // Dojo Toolkit
     "jquery"        : true,    // jQuery
-    "mootools"      : false,    // MooTools
     "node"          : true,    // Node.js
     "nonstandard"   : false,    // Widely adopted globals (escape, unescape, etc)
-    "prototypejs"   : false,    // Prototype and Scriptaculous
-    "rhino"         : false,    // Rhino
-    "worker"        : false,    // Web Workers
-    "wsh"           : false,    // Windows Scripting Host
     "yui"           : false,    // Yahoo User Interface
+    "mocha"         : true,
 
     // Custom Globals
     "globals"       : {
