@@ -33,7 +33,9 @@
 		"Sass",
 		"SideBarEnhancements",
 		"Stylus",
+		"SublimeLinter-jshint",
 		"SublimeLinter-jsxhint",
+		"tern_for_sublime",
 		"Theme - Spacegray",
 		"VAlign"
 	]

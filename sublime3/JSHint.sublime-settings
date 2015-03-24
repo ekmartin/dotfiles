@@ -3,7 +3,9 @@
   // https://github.com/victorporof/Sublime-JSHint#oh-noez-command-not-found
   // http://nodejs.org/#download
   "node_path": {
-    "osx": "/Users/ek/.nvm/current/bin/node"
+    "windows": "C:/Program Files/nodejs/node.exe",
+    "linux": "/usr/bin/nodejs",
+    "osx": "/usr/local/bin/node"
   },
 
   // Automatically lint on edit (Sublime Text 3 only).

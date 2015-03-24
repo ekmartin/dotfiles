@@ -52,21 +52,20 @@ Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
-Plugin 'Townk/vim-autoclose'
 Plugin 'mxw/vim-jsx'
 Plugin 'chriskempson/base16-vim'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set timeoutlen=50
-
-" 256-colors:
+colorscheme base16-eighties
 set t_Co=256
 let base16colorspace=256
 
-" colorscheme Tomorrow-Night-Eighties
-colorscheme base16-eighties
+set timeoutlen=50
 
 set background=dark
 
@@ -76,6 +75,7 @@ set laststatus=2
 " Keybindings
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
+map <D-p> :CtrlP<CR>
 
 " Move in screen lines
 noremap  <buffer> <silent> k gk
@@ -84,7 +84,7 @@ noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
 " Enable jsx in non .jsx-files
-" let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
 
 " Show buffers in airline
 let g:airline#extensions#tabline#enabled = 1
@@ -97,6 +97,18 @@ let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories  = ["snips"]
+
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[6 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
 
 " Make UltiSnips work with YouCompleteMe
 function! g:UltiSnips_Complete()
@@ -115,8 +127,7 @@ function! g:UltiSnips_Complete()
 endfunction
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+noremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-noremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

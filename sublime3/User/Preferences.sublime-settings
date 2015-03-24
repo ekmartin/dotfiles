@@ -2,11 +2,13 @@
 	"color_scheme": "Packages/Theme - Spacegray/base16-eighties.dark.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_size": 15,
-	"ignored_packages": [],
+	"ignored_packages":
+	[
+	],
 	"scroll_speed": 1.0,
 	"show_minimap": false,
 	"tab_size": 2,
 	"theme": "Spacegray Eighties.sublime-theme",
-    "trim_trailing_white_space_on_save": true,
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
 }
