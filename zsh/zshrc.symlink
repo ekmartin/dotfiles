@@ -37,13 +37,13 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 
 export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+source /usr/local/opt/nvm/nvm.sh
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL ]
 
-plugins=(git pip python rbates virtualenv npm)
+plugins=(git pip python rbates virtualenv)
 source $ZSH/oh-my-zsh.sh
 
 . ~/z/z.sh
