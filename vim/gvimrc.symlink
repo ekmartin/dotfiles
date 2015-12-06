@@ -1,19 +1,24 @@
-set guifont=Menlo:h15
+set guifont=Inconsolata:h18
 
-" Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
-" the right side. Ctrl-Shift-Tab goes the other way.
-noremap <C-Tab> :tabnext<CR>
-noremap <C-S-Tab> :tabprev<CR>
+" Press Ctrl-tab to switch between open buffers (like browser tabs) to 
+" the right side. Ctrl-Shift-tab goes the other way.
+noremap <C-tab> :bnext<CR>
+noremap <C-S-tab> :bprev<CR>
 
-" Switch to specific tab numbers with Command-number
-noremap <D-1> :tabn 1<CR>
-noremap <D-2> :tabn 2<CR>
-noremap <D-3> :tabn 3<CR>
-noremap <D-4> :tabn 4<CR>
-noremap <D-5> :tabn 5<CR>
-noremap <D-6> :tabn 6<CR>
-noremap <D-7> :tabn 7<CR>
-noremap <D-8> :tabn 8<CR>
-noremap <D-9> :tabn 9<CR>
-" Command-0 goes to the last tab
-noremap <D-0> :tablast<CR>
+" Switch to specific buffer numbers with Command-number
+noremap <D-1> :1b<CR>
+noremap <D-2> :2b<CR>
+noremap <D-3> :3b<CR>
+noremap <D-4> :4b<CR>
+noremap <D-5> :5b<CR>
+noremap <D-6> :6b<CR>
+noremap <D-7> :7b<CR>
+noremap <D-8> :8b<CR>
+noremap <D-9> :9b<CR>
+" Command-0 goes to the last buffer
+noremap <D-0> :blast<CR>
+
+" Open NERDTree on startup
+" autocmd vimenter * NERDTree
+
+Plugin 'auto-pairs'

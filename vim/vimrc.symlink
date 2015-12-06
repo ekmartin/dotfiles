@@ -1,3 +1,7 @@
+" Map leader to ,
+let mapleader = ","
+let g:mapleader = ","
+
 syntax on
 
 " Show line numbers
@@ -13,18 +17,14 @@ set shiftwidth=4
 set expandtab
 
 " Fix indenting
+filetype indent on
 set autoindent
-set smartindent
 
 " Better search
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" Map leader to ,
-let mapleader = ","
-let g:mapleader = ","
 
 " Vundle
 set nocompatible
@@ -39,23 +39,24 @@ Plugin 'SirVer/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
-Plugin 'walm/jshint.vim'
 Plugin 'moll/vim-node'
 Plugin 'wting/rust.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wavded/vim-stylus'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'godlygeek/tabular'
-Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-fireplace'
 Plugin 'chriskempson/base16-vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'lervag/vimtex'
+Plugin 'armasm'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -64,14 +65,14 @@ colorscheme base16-eighties
 set t_Co=256
 let base16colorspace=256
 
-set timeoutlen=50
-
 set background=dark
 
 " For Airline
 set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
 
 " Keybindings
+nmap <leader>m :LivedownPreview<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 map <D-p> :CtrlP<CR>
@@ -82,8 +83,18 @@ noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
 " Enable jsx in non .jsx-files
 let g:jsx_ext_required = 0
+
+set timeoutlen=350
 
 " Show buffers in airline
 let g:airline#extensions#tabline#enabled = 1
@@ -97,6 +108,9 @@ let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories  = ["snips"]
 
+" Remove search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
@@ -104,3 +118,26 @@ endif
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" Synastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+autocmd FileType c,java,javascript,python,go,elixir autocmd BufWritePre * call TrimWhiteSpace()
+nnoremap <silent> <leader>ts :call TrimWhiteSpace()<CR>
+
+function! TextFormat()
+    set linebreak
+    set wrap
+    set textwidth=80
+endfunction
+command! Text call TextFormat()
+
+" Close vim if the only open window left is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

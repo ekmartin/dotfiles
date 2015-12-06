@@ -1,3 +1,6 @@
 [submodule "base16-shell"]
 	path = base16-shell
 	url = git@github.com:ekmartin/base16-shell.git
+[submodule "spaceman-diff"]
+	path = spaceman-diff
+	url = git@github.com:holman/spaceman-diff.git
