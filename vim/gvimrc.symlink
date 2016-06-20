@@ -1,6 +1,6 @@
-set guifont=Inconsolata:h18
+set guifont=Inconsolata:h20
 
-" Press Ctrl-tab to switch between open buffers (like browser tabs) to 
+" Press Ctrl-tab to switch between open buffers (like browser tabs) to
 " the right side. Ctrl-Shift-tab goes the other way.
 noremap <C-tab> :bnext<CR>
 noremap <C-S-tab> :bprev<CR>
@@ -22,3 +22,14 @@ noremap <D-0> :blast<CR>
 " autocmd vimenter * NERDTree
 
 Plugin 'auto-pairs'
+
+function! TextFormat()
+    set linebreak
+    set wrap
+    set textwidth=70
+endfunction
+command! Text call TextFormat()
+
+" No blinking curso
+" " No blinking cursor:
+set guicursor=a:blinkon0

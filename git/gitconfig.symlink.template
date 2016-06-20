@@ -4,7 +4,7 @@
 [hub]
         protocol = ssh
 [user]
-        name = ekmartin
+        name = Martin Ek
         email = AUTHOREMAIL
 [credential]
         helper = osxkeychain

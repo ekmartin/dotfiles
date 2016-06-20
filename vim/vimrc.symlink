@@ -38,7 +38,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'moll/vim-node'
 Plugin 'wting/rust.vim'
 Plugin 'pangloss/vim-javascript'
@@ -141,3 +141,5 @@ command! Text call TextFormat()
 
 " Close vim if the only open window left is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*

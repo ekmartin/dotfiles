@@ -6,7 +6,7 @@ export PROJECTS=~/Code
 
 export GOPATH=$PROJECTS/go
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
-export PATH=$PATH:$GOPATH/bin:~/.local/bin:/Applications/Mozart2.app/Contents/Resources/bin
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH:$GOPATH/bin:~/.local/bin:/Applications/Mozart2.app/Contents/Resources/bin
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
@@ -49,3 +49,5 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR="/Users/ek/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
