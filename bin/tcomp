@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Outputting diffs between generated files and solution files:"
+for file in $(find . -iname "*.table"); do
+  echo "File: $file:"
+  colordiff <(sort < "$file") <(sort < "$file.correct")
+done

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Deploy to Heroku
+git push heroku master

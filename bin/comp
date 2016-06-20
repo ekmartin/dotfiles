@@ -1,0 +1,5 @@
+echo "Outputting diffs between generated files and solution files:"
+for file in $(find . -iname "*.tree"); do
+  echo "File: $file:"
+  colordiff $file $file.correct
+done

@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+require('http')
+  .createServer((req, res) => {
+    const body = [];
+    req
+      .on('error', err => console.error(err))
+      .on('data', chunk => {
+        body.push(chunk);
+      })
+      .on('end', () => {
+        const total = Buffer.concat(body).toString();
+        console.log(req.headers);
+        console.log(total);
+        res.end();
+      });
+  })
+  .listen(process.env.PORT || 1337, () =>
+    console.log('Listening.')
+  );

@@ -1,0 +1,8 @@
+test "$(basename $0)" = "ssht" && {
+    ssh $1 -t 'tmux -CC' 
+}
+
+test "$(basename $0)" = "sshta" && {
+    ssh $1 -t 'tmux -CC attach -t $2' 
+}
+
