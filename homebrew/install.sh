@@ -9,11 +9,9 @@
 if test ! $(which brew)
 then
   echo "  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" > /tmp/homebrew-install.log
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /tmp/homebrew-install.log
 fi
 
 # Install homebrew packages
-brew tap phinze/cask
-brew install grc coreutils mongodb brew-cask cloc htop-osx wget unrar hub node mosh
-
+brew install grc coreutils cloc htop-osx unrar hub node mosh python python3
 exit 0
