@@ -3,7 +3,6 @@ omzDir=~/.oh-my-zsh
 
 if [ ! -d "$omzDir" ]
 then
-  echo "Trying to clone?"
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
