@@ -21,6 +21,5 @@ alias paste="copa paste"
 # sftp auto-completion
 alias sftp="with-readline sftp"
 
-alias mc="make clean && make"
 alias f="mdfind -onlyin ."
 alias imdb="imdbtr"
