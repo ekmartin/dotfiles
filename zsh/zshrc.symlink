@@ -45,8 +45,6 @@ BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
 plugins=(git pip python rbates virtualenv)
 source $ZSH/oh-my-zsh.sh
 
-. ~/z/z.sh
-
 export NVM_DIR="/Users/ek/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
