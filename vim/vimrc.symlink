@@ -40,10 +40,7 @@ Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'moll/vim-node'
-Plugin 'wting/rust.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'wavded/vim-stylus'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'godlygeek/tabular'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
@@ -53,17 +50,15 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'chriskempson/base16-vim'
+Plugin 'joshdick/onedark.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'lervag/vimtex'
-Plugin 'armasm'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme base16-eighties
-set t_Co=256
-let base16colorspace=256
+set termguicolors
+colorscheme onedark
 
 set background=dark
 

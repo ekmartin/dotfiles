@@ -13,5 +13,5 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils cloc htop-osx unrar hub node mosh python python3
+brew install grc coreutils cloc htop-osx unrar hub node mosh python python3 vim postgresql redis yarn
 exit 0
