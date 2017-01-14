@@ -6,7 +6,7 @@ export PROJECTS=~/Code
 
 export GOPATH=$PROJECTS/go
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
-export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH:$GOPATH/bin:~/.local/bin:/Applications/Mozart2.app/Contents/Resources/bin
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH:$GOPATH/bin:~/.local/bin:/usr/local/opt/go/libexec/bin
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
