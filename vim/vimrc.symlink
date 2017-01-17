@@ -11,9 +11,9 @@ set number
 set backspace=2
 
 " Set tabs to 4 spaces
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Fix indenting
@@ -41,8 +41,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
-Plugin 'godlygeek/tabular'
-Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -67,7 +65,6 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 
 " Keybindings
-nmap <leader>m :LivedownPreview<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
 map <D-p> :CtrlP<CR>
@@ -91,11 +88,15 @@ let g:jsx_ext_required = 0
 
 set timeoutlen=350
 
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
 " Show buffers in airline
 let g:airline#extensions#tabline#enabled = 1
 
 " Remove whitespace highlight from vim-go
 let g:go_highlight_trailing_whitespace_error = 0
+let g:go_fmt_command = "goimports"
 
 " UltiSnips-bindings
 let g:UltiSnipsExpandTrigger       = "<tab>"
@@ -135,6 +136,6 @@ endfunction
 command! Text call TextFormat()
 
 " Close vim if the only open window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
