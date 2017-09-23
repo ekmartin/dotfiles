@@ -41,3 +41,6 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Show all processes in Activity Monitor
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+# Disable press and hold
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

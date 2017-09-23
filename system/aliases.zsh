@@ -9,10 +9,7 @@ alias ssh="color-ssh ssh"
 alias mosh="color-ssh mosh"
 
 # IRC
-alias irc="color-ssh mosh ek -- tmux attach -t irc"
-
-# HNWatch
-alias hnwatch="color-ssh mosh ek -- ./hnwatch"
+alias irc="color-ssh mosh larek -- tmux attach -t irc"
 
 # Copa
 alias copy="copa copy"
@@ -23,3 +20,10 @@ alias sftp="with-readline sftp"
 
 alias f="mdfind -onlyin ."
 alias imdb="imdbtr"
+
+alias goenv="export GOPATH=$PROJECTS/go/src/github.com/ekmartin/6.824-labs"
+
+# htop can't show all processes without sudo
+alias htop="sudo htop"
+
+alias rscheme="rlwrap scheme"

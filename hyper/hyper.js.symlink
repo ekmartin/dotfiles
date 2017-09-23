@@ -94,7 +94,8 @@ module.exports = {
   plugins: [
     'hypercwd',
     'hyperlinks',
-    'hyperterm-title'
+    'hyperterm-title',
+    'hyper-markdown-preview'
   ],
 
   // in development, you can create a directory under
