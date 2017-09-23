@@ -1,35 +1,34 @@
-set guifont=Inconsolata:h20
+set guifont=Inconsolata:h19
 
 " Press Ctrl-tab to switch between open buffers (like browser tabs) to
 " the right side. Ctrl-Shift-tab goes the other way.
-noremap <C-tab> :bnext<CR>
-noremap <C-S-tab> :bprev<CR>
+noremap <C-tab> :tabn<CR>
+noremap <C-S-tab> :tabp<CR>
 
-" Switch to specific buffer numbers with Command-number
-noremap <D-1> :1b<CR>
-noremap <D-2> :2b<CR>
-noremap <D-3> :3b<CR>
-noremap <D-4> :4b<CR>
-noremap <D-5> :5b<CR>
-noremap <D-6> :6b<CR>
-noremap <D-7> :7b<CR>
-noremap <D-8> :8b<CR>
-noremap <D-9> :9b<CR>
+" Switch to specific tab numbers with Command-number
+noremap <D-1> 1gt
+noremap <D-2> 2gt
+noremap <D-3> 3gt
+noremap <D-4> 4gt
+noremap <D-5> 5gt
+noremap <D-6> 6gt
+noremap <D-7> 7gt
+noremap <D-8> 8gt
+noremap <D-9> 9gt
 " Command-0 goes to the last buffer
-noremap <D-0> :blast<CR>
-
-" Open NERDTree on startup
-" autocmd vimenter * NERDTree
+noremap <D-0> :tablast<CR>
 
 Plugin 'auto-pairs'
 
 function! TextFormat()
     set linebreak
     set wrap
-    set textwidth=70
+    set textwidth=80
 endfunction
 command! Text call TextFormat()
 
-" No blinking curso
-" " No blinking cursor:
+" No blinking cursor:
 set guicursor=a:blinkon0
+
+" Remove scrollbar:
+set guioptions=
