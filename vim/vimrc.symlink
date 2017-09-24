@@ -53,7 +53,6 @@ Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'w0rp/ale'
-" Plugin 'airblade/vim-gitgutter'
 Plugin 'fatih/vim-go'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mxw/vim-jsx'
@@ -62,10 +61,12 @@ Plugin 'lervag/vimtex'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'janko-m/vim-test'
 Plugin 'rust-lang/rust.vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'airblade/vim-gitgutter'
 " Plugin 'racer-rust/vim-racer'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
 set termguicolors
 colorscheme onedark
@@ -88,10 +89,10 @@ let g:ycm_rust_src_path = '/Users/ek/.rustup/toolchains/nightly-x86_64-apple-dar
 
 " For Airline
 set laststatus=2
-" let g:airline#extensions#tabline#enabled = 1
 
 " Keybindings
-map <C-n> :NERDTreeToggle<CR>
+let g:nerdtree_tabs_open_on_gui_startup = 0
+map <C-n> :NERDTreeTabsToggle<CR>
 map <D-p> :CtrlPMixed<CR>
 
 " Move in screen lines
@@ -105,8 +106,8 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-m>'],
+  \ 'AcceptSelection("e")': ['<c-t>'],
+  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
 
 " run tests with vim-test
@@ -119,11 +120,6 @@ nmap <silent> <leader>g :TestVisit<CR>
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
-
-" set timeoutlen=350
-
-" Show buffers in airline
-" let g:airline#extensions#tabline#enabled = 1
 
 " Remove whitespace highlight from vim-go
 let g:go_highlight_trailing_whitespace_error = 0
@@ -152,8 +148,5 @@ function! TextFormat()
     set textwidth=80
 endfunction
 command! Text call TextFormat()
-
-" Close vim if the only open window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
