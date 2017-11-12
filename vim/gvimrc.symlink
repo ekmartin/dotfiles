@@ -18,8 +18,6 @@ noremap <D-9> 9gt
 " Command-0 goes to the last buffer
 noremap <D-0> :tablast<CR>
 
-Plugin 'auto-pairs'
-
 function! TextFormat()
     set linebreak
     set wrap

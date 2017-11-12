@@ -17,6 +17,9 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR=$(which vim)
 export NODE_ENV="development"
+export RUST_ROOT="$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
+export RUST_SRC_PATH="$RUST_ROOT/lib/rustlib/src/rust/src"
+export LD_LIBRARY_PATH="$RUST_ROOT/lib:$LD_LIBRARY_PATH"
 
 # Stuff that shouldn't be in the repo:
 if [[ -a ~/.localrc ]]
@@ -47,7 +50,7 @@ BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
 plugins=(git pip python rbates virtualenv)
 source $ZSH/oh-my-zsh.sh
 
-export NVM_DIR="/Users/ek/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

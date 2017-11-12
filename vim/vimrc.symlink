@@ -62,7 +62,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'janko-m/vim-test'
 Plugin 'rust-lang/rust.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'airblade/vim-gitgutter'
+Plugin 'Raimondi/delimitMate'
+Plugin 'airblade/vim-gitgutter'
 " Plugin 'racer-rust/vim-racer'
 
 call vundle#end()
@@ -72,14 +73,19 @@ set termguicolors
 colorscheme onedark
 
 nnoremap <Leader>] :YcmCompleter GoTo<CR>
+nnoremap <Leader>f :RustFmt<CR>
 
 let g:jsx_ext_required = 0
 
-let g:rustfmt_autosave = 1
+let g:rustfmt_command = "cargo fmt -- "
+let g:rustfmt_autosave = 0
 
 " Ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_rust_cargo_use_check = 1
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote'
+let g:ale_linters = {'rust': ['rls']}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \}
@@ -94,6 +100,7 @@ set laststatus=2
 let g:nerdtree_tabs_open_on_gui_startup = 0
 map <C-n> :NERDTreeTabsToggle<CR>
 map <D-p> :CtrlPMixed<CR>
+nmap π :CtrlPBuffer<Cr>
 
 " Move in screen lines
 noremap  <buffer> <silent> k gk
@@ -139,14 +146,18 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
-autocmd FileType rust,ruby,c,java,javascript,python,go,elixir autocmd BufWritePre * call TrimWhiteSpace()
+autocmd FileType rust,ruby,tex,c,java,javascript,python,go,elixir autocmd BufWritePre * call TrimWhiteSpace()
 nnoremap <silent> <leader>ts :call TrimWhiteSpace()<CR>
 
 function! TextFormat()
     set linebreak
     set wrap
     set textwidth=80
+    " set fo+=a
 endfunction
 command! Text call TextFormat()
+autocmd BufReadPost,BufNewFile *.md,*.txt,*.tex call TextFormat()
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/target/*
+
+let g:ycm_filetype_blacklist = { 'tex': 1, 'markdown': 1 }
