@@ -27,3 +27,5 @@ alias goenv="export GOPATH=$PROJECTS/go/src/github.com/ekmartin/6.824-labs"
 alias htop="sudo htop"
 
 alias rscheme="rlwrap scheme"
+alias o="open"
+alias csoup="rm *-log-*.json *.bin"
