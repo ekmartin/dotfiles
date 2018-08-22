@@ -15,6 +15,8 @@ fi
 # Install homebrew packages
 brew install grc \
   coreutils \
+  gdb \
+  valgrind \
   cloc \
   htop \
   unrar \
@@ -32,11 +34,13 @@ brew install grc \
   cmake \
   gnupg2 \
   elasticsearch \
+  telnet \
   tmux \
   with-readline \
   aspell \
   rlwrap
 
-brew cask install google-chrome spotify atom iterm2 hyper vlc java basictex
+brew cask install google-chrome spotify atom iterm2 hyper vlc java
+# brew cask install mactex
 
 exit 0

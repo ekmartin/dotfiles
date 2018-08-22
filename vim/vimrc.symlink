@@ -44,7 +44,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
@@ -59,11 +59,12 @@ Plugin 'mxw/vim-jsx'
 Plugin 'joshdick/onedark.vim'
 Plugin 'lervag/vimtex'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'janko-m/vim-test'
+" Plugin 'janko-m/vim-test'
 Plugin 'rust-lang/rust.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Raimondi/delimitMate'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'junegunn/goyo.vim'
 " Plugin 'racer-rust/vim-racer'
 
 call vundle#end()
@@ -77,10 +78,18 @@ nnoremap <Leader>f :RustFmt<CR>
 
 let g:jsx_ext_required = 0
 
-let g:rustfmt_command = "cargo fmt -- "
+let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_emit_files = 1
+
+" let g:rustfmt_command = "cargo fmt -- "
 let g:rustfmt_autosave = 0
 
+let delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_expand_cr = 1
+au FileType rust let b:delimitMate_quotes = "\""
+
 " Ale
+let g:ale_python_flake8_args="--ignore=E501,E302"
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_rust_cargo_use_check = 1
 let g:ale_fix_on_save = 1
@@ -88,6 +97,7 @@ let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_linters = {'rust': ['rls']}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
+\   'css': ['prettier']
 \}
 
 " let g:racer_cmd = '/Users/ek/.cargo/bin/racer'
@@ -101,6 +111,7 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 map <C-n> :NERDTreeTabsToggle<CR>
 map <D-p> :CtrlPMixed<CR>
 nmap π :CtrlPBuffer<Cr>
+nmap <leader>g :Goyo<CR>
 
 " Move in screen lines
 noremap  <buffer> <silent> k gk
@@ -112,17 +123,19 @@ noremap  <buffer> <silent> $ g$
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+" let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<c-t>'],
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
 
 " run tests with vim-test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+" nmap <silent> <leader>t :TestNearest<CR>
+" nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+" nmap <silent> <leader>l :TestLast<CR>
+" nmap <silent> <leader>g :TestVisit<CR>
 
 " replace currently selected text with default register
 " without yanking it
@@ -150,14 +163,15 @@ autocmd FileType rust,ruby,tex,c,java,javascript,python,go,elixir autocmd BufWri
 nnoremap <silent> <leader>ts :call TrimWhiteSpace()<CR>
 
 function! TextFormat()
+    set spell spelllang=en_us
     set linebreak
     set wrap
     set textwidth=80
-    " set fo+=a
+    " set comments+=n:#
 endfunction
 command! Text call TextFormat()
 autocmd BufReadPost,BufNewFile *.md,*.txt,*.tex call TextFormat()
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/target/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/target/*,*/dist/*,*.log
 
-let g:ycm_filetype_blacklist = { 'tex': 1, 'markdown': 1 }
+let g:ycm_filetype_blacklist = { 'tex': 1, 'plaintex': 1, 'text': 1, 'markdown': 1 }

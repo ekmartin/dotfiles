@@ -2,8 +2,8 @@ set guifont=Inconsolata:h19
 
 " Press Ctrl-tab to switch between open buffers (like browser tabs) to
 " the right side. Ctrl-Shift-tab goes the other way.
-noremap <C-tab> :tabn<CR>
-noremap <C-S-tab> :tabp<CR>
+" noremap <C-tab> :tabn<CR>
+" noremap <C-S-tab> :tabp<CR>
 
 " Switch to specific tab numbers with Command-number
 noremap <D-1> 1gt
@@ -17,13 +17,6 @@ noremap <D-8> 8gt
 noremap <D-9> 9gt
 " Command-0 goes to the last buffer
 noremap <D-0> :tablast<CR>
-
-function! TextFormat()
-    set linebreak
-    set wrap
-    set textwidth=80
-endfunction
-command! Text call TextFormat()
 
 " No blinking cursor:
 set guicursor=a:blinkon0
