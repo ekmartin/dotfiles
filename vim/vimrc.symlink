@@ -10,6 +10,9 @@ set hidden
 " Show line numbers
 set number
 
+" Show column number
+set ruler
+
 " Make backspace work normally
 set backspace=2
 
@@ -41,13 +44,15 @@ set autoread
 set nocompatible
 filetype off
 
+" fzf
+set rtp+=/usr/local/opt/fzf
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
+" Plugin 'bling/vim-airline'
+" Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
@@ -57,15 +62,20 @@ Plugin 'fatih/vim-go'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'joshdick/onedark.vim'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
 Plugin 'vim-ruby/vim-ruby'
 " Plugin 'janko-m/vim-test'
-Plugin 'rust-lang/rust.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Raimondi/delimitMate'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/goyo.vim'
-" Plugin 'racer-rust/vim-racer'
+Plugin 'fugitive.vim'
+
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -73,16 +83,15 @@ filetype plugin indent on
 set termguicolors
 colorscheme onedark
 
-nnoremap <Leader>] :YcmCompleter GoTo<CR>
-nnoremap <Leader>f :RustFmt<CR>
+" nnoremap <Leader>] :YcmCompleter GoTo<CR>
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:deoplete#enable_at_startup = 1
 
 let g:jsx_ext_required = 0
-
-let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_emit_files = 1
-
-" let g:rustfmt_command = "cargo fmt -- "
-let g:rustfmt_autosave = 0
 
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
@@ -90,21 +99,23 @@ au FileType rust let b:delimitMate_quotes = "\""
 
 " Ale
 let g:ale_python_flake8_args="--ignore=E501,E302"
+" let g:ale_linters = {
+" \ 'eruby': [],
+" \ 'javascript': ['eslint', 'flow'],
+" \ 'ruby': ['rubocop', 'ruby'],
+" \}
+
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_rust_cargo_use_check = 1
 let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_options = '--single-quote'
-let g:ale_linters = {'rust': ['rls']}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
-\   'css': ['prettier']
 \}
 
-" let g:racer_cmd = '/Users/ek/.cargo/bin/racer'
-let g:ycm_rust_src_path = '/Users/ek/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src/rustc'
-
 " For Airline
-set laststatus=2
+" set laststatus=2
+
+" NERDTree
+let g:NERDTreeMinimalUI = 1
 
 " Keybindings
 let g:nerdtree_tabs_open_on_gui_startup = 0
@@ -113,18 +124,32 @@ map <D-p> :CtrlPMixed<CR>
 nmap π :CtrlPBuffer<Cr>
 nmap <leader>g :Goyo<CR>
 
+function! FlipBindingPry()
+  if getline('.') =~? '^\s*binding\.pry\s*$'
+    normal dd
+  else
+    normal obinding.pry
+  endif
+  write
+endfunction
+nnoremap <leader>r :call FlipBindingPry()<CR>
+nnoremap <leader>t :g/\s*binding.pry$/d \| :w<CR>
+
 " Move in screen lines
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
-" delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
 " let g:ctrlp_show_hidden = 1
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|flow-typed)|(\.(swp|ico|git|svn|json))$'
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+" Don't travel up to closest .git folder:
+let g:ctrlp_working_path_mode = 0
+set grepprg=rg\ --color=never
+let g:ctrlp_user_command = 'rg %s --ignore-file ~/stripe/.fileignore --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<c-t>'],
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
@@ -140,6 +165,10 @@ let g:ctrlp_prompt_mappings = {
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 
 " Remove whitespace highlight from vim-go
 let g:go_highlight_trailing_whitespace_error = 0

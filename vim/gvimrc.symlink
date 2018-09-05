@@ -2,8 +2,8 @@ set guifont=Inconsolata:h19
 
 " Press Ctrl-tab to switch between open buffers (like browser tabs) to
 " the right side. Ctrl-Shift-tab goes the other way.
-" noremap <C-tab> :tabn<CR>
-" noremap <C-S-tab> :tabp<CR>
+noremap <C-tab> :tabn<CR>
+noremap <C-S-tab> :tabp<CR>
 
 " Switch to specific tab numbers with Command-number
 noremap <D-1> 1gt
@@ -22,4 +22,4 @@ noremap <D-0> :tablast<CR>
 set guicursor=a:blinkon0
 
 " Remove scrollbar:
-set guioptions=
+set guioptions=e
