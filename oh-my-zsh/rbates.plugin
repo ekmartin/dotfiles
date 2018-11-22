@@ -10,10 +10,10 @@ compdef _c c
 
 # Does the same as 'c', but for go projects
 gop() {
-  cd $GOPATH/src/github.com/ekmartin/$1
+  cd $GOPATH/src/git.corp.stripe.com/apiori/gopiori/$1
 }
 _gop() {
-  _files -W $GOPATH/src/github.com/ekmartin -/ 
+  _files -W $GOPATH/src/git.corp.stripe.com/apiori/gopiori -/ 
 }
 compdef _gop gop
 
