@@ -16,31 +16,22 @@ fi
 brew install grc \
   coreutils \
   gdb \
-  valgrind \
   cloc \
   htop \
   unrar \
-  hub \
   node \
   mosh \
   python \
   python3 \
   vim \
-  postgresql \
-  redis \
   yarn \
   ripgrep \
   go \
   cmake \
-  gnupg2 \
-  elasticsearch \
   telnet \
   tmux \
   with-readline \
   aspell \
   rlwrap
-
-brew cask install google-chrome spotify atom iterm2 hyper vlc java
-# brew cask install mactex
 
 exit 0
