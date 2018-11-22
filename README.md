@@ -1,6 +1,6 @@
 ## Dotfiles
 
-Based on [@ryanb](https://github.com/ryanb/dotfiles) and [@holman's](https://github.com/holman/dotfiles) dotfiles. 
+Upstream: http://github.com/ekmartin/dotfiles
 
 ### Installation:
 
