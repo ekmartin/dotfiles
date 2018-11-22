@@ -5,7 +5,7 @@ alias icurl="curl -I"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # Set tab color
-alias ssh="color-ssh ssh"
+# alias ssh="color-ssh ssh"
 alias mosh="color-ssh mosh"
 
 # IRC
@@ -26,10 +26,13 @@ alias goenv="export GOPATH=$PROJECTS/go/src/github.com/ekmartin/6.824-labs"
 # htop can't show all processes without sudo
 alias htop="sudo htop"
 
-alias rscheme="rlwrap scheme"
 alias o="open"
-alias csoup="rm *-snapshot_id; rm *-log-*.json; rm *.bin; rm -rf *.db; rm *.db-journal"
 alias rmswap="find . -name '*.swp' -exec rm {} ';'"
-alias btex="bibtex-search"
 alias pdfwriter="cd /Users/shared/PDFwriter/$USER"
-alias dash="docker-compose exec soup bash"
+
+alias rrg="rg -t ruby -g '!**/test/*'"
+alias grg="rg -t go -g '!vendor/*'"
+alias lint="git diff origin/master --name-only | xargs ./scripts/bin/lint -n"
+
+alias sorbet-build="bazel build //main:sorbet --config=dbg"
+alias sorbet-test="bazel test //... --config=dbg --test_output=errors"
