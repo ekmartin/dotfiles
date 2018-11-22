@@ -51,9 +51,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'bling/vim-airline'
-" Plugin 'majutsushi/tagbar'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
@@ -62,14 +59,14 @@ Plugin 'fatih/vim-go'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'joshdick/onedark.vim'
-" Plugin 'lervag/vimtex'
 Plugin 'vim-ruby/vim-ruby'
 " Plugin 'janko-m/vim-test'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'xndcn/vim-nerdtree-tabs'
 Plugin 'Raimondi/delimitMate'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/goyo.vim'
 Plugin 'fugitive.vim'
+Plugin 'rodjek/vim-puppet'
 
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'
@@ -111,6 +108,8 @@ let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \}
 
+let g:ruby_indent_assignment_style = 'variable'
+
 " For Airline
 " set laststatus=2
 
@@ -118,10 +117,12 @@ let g:ale_fixers = {
 let g:NERDTreeMinimalUI = 1
 
 " Keybindings
+let g:nerdtree_tabs_autofind = 1
 let g:nerdtree_tabs_open_on_gui_startup = 0
-map <C-n> :NERDTreeTabsToggle<CR>
-map <D-p> :CtrlPMixed<CR>
-nmap π :CtrlPBuffer<Cr>
+map <C-n> <plug>NERDTreeTabsToggle<CR>
+
+nnoremap <C-p> :Files<Cr>
+nmap π :Buffers<Cr>
 nmap <leader>g :Goyo<CR>
 
 function! FlipBindingPry()
@@ -141,19 +142,17 @@ noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
-" let g:ctrlp_show_hidden = 1
-" let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|flow-typed)|(\.(swp|ico|git|svn|json))$'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" fzf
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'down': '~25%' }
+let g:fzf_action = {
+  \ 'ctrl-m': 'tabedit',
+  \ 'ctrl-t': 'e',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " Don't travel up to closest .git folder:
-let g:ctrlp_working_path_mode = 0
-set grepprg=rg\ --color=never
-let g:ctrlp_user_command = 'rg %s --ignore-file ~/stripe/.fileignore --files --color=never --glob ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<c-t>'],
-  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-\ }
 
 " run tests with vim-test
 " nmap <silent> <leader>t :TestNearest<CR>
@@ -168,7 +167,6 @@ vnoremap <leader>p "_dP
 " delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
-
 
 " Remove whitespace highlight from vim-go
 let g:go_highlight_trailing_whitespace_error = 0
@@ -188,7 +186,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
-autocmd FileType rust,ruby,tex,c,java,javascript,python,go,elixir autocmd BufWritePre * call TrimWhiteSpace()
+" autocmd FileType rust,ruby,tex,c,java,javascript,python,go,elixir autocmd BufWritePre * call TrimWhiteSpace()
+autocmd FileType rust,ruby,tex,c,java,javascript,python,elixir autocmd BufWritePre * call TrimWhiteSpace()
 nnoremap <silent> <leader>ts :call TrimWhiteSpace()<CR>
 
 function! TextFormat()
