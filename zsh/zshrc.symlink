@@ -2,23 +2,23 @@
 export DOTFILES=$HOME/.dotfiles
 
 # Projects-folder, used to c [project] to:
-export PROJECTS=~/Code
+export PROJECTS=~/stripe
 
 export GOPATH=$PROJECTS/go
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home
-export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH:$GOPATH/bin:~/.local/bin:/usr/local/opt/go/libexec/bin:/usr/local/sbin
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH=$PATH:$GOPATH/bin:~/.local/bin:/usr/local/opt/go/libexec/bin:/usr/local/sbin
 export PATH=./node_modules/.bin:$PATH
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
+export PATH=$PROJECTS/space-commander/bin:$PATH
+export PATH=$PROJECTS/password-vault/bin:$PATH
+export PATH=$PROJECTS/henson/bin:$PATH
+export PATH="/usr/local/opt/bison/bin:$PATH"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export EDITOR=$(which vim)
 export NODE_ENV="development"
-export RUST_ROOT="$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin"
-export RUST_SRC_PATH="$RUST_ROOT/lib/rustlib/src/rust/src"
 export LD_LIBRARY_PATH="$RUST_ROOT/lib:$LD_LIBRARY_PATH"
 
 # Stuff that shouldn't be in the repo:
@@ -47,10 +47,39 @@ ZSH_THEME="af-magic"
 BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL ]
 
-plugins=(git pip python rbates virtualenv)
+export FZF_BASE=/usr/local/opt/fzf
+
+plugins=(fzf git rbates rbenv)
+# plugins=(git rbates)
 source $ZSH/oh-my-zsh.sh
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export FZF_DEFAULT_COMMAND='fd --type f --follow --ignore-file ~/stripe/.fileignore'
+
+. ~/.stripe-repos.sh
+
+# CTRL-R - Paste the selected command from history into the command line
+# Modified version that excludes duplicate entries.
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
+  selected=( $(fc -rl 1 | perl -ne 'print if !$seen{($_ =~ s/^[0-9\s]*//r)}++' |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+
+  # Run the command right away:
+  zle accept-line
+  return $ret
+}
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget
