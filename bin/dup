@@ -1,0 +1,6 @@
+#!/bin/bash
+dup() {
+  docker-compose up -d || (sleep 1 && dup)
+}
+
+dup
