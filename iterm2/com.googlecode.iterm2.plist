@@ -2135,9 +2135,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>228 1640 958 451 -127 1050 1920 1057 </string>
+	<string>279 576 1018 447 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1027 0 0 1680 1027 </string>
+	<string>840 0 840 1027 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>212 101 730 551 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_A2980113-9EC0-483C-B866-0DFD56161101</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_A2980113-9EC0-483C-B866-0DFD56161101_selection</key>
@@ -2714,11 +2716,11 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 14</string>
+			<string>Monaco 15</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 15</string>
+			<string>Monaco 16</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -5208,7 +5210,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-10-03T21:34:42Z</date>
+	<date>2018-11-28T17:36:53Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -5233,6 +5235,8 @@
 	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>TerminalMargin</key>
+	<integer>5</integer>
 	<key>ThreeFingerEmulates</key>
 	<false/>
 	<key>TmuxDashboardLimit</key>
@@ -8494,6 +8498,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.1</string>
+	<string>3.2.5</string>
 </dict>
 </plist>
